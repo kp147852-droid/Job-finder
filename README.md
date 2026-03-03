@@ -62,6 +62,30 @@ Open:
 - Dashboard: `http://127.0.0.1:8000/`
 - API docs: `http://127.0.0.1:8000/docs`
 
+## Demo Flow (60 Seconds)
+
+1. Save profile and paste resume.
+2. Run Discover + Auto Apply with role/domain filters.
+3. Review discovered jobs and select specific jobs.
+4. Run Apply Selected and inspect status transitions.
+5. Show `needs_user_input` handling for manual-required fields.
+
+## Screenshots
+
+Add images to `docs/images/` with these names:
+
+- `dashboard-home.png`
+- `discover-auto-apply.png`
+- `discovered-jobs-selection.png`
+- `applications-status.png`
+
+Then they render automatically below:
+
+![Dashboard Home](docs/images/dashboard-home.png)
+![Discover Auto Apply](docs/images/discover-auto-apply.png)
+![Discovered Jobs Selection](docs/images/discovered-jobs-selection.png)
+![Applications Status](docs/images/applications-status.png)
+
 ## Internet Search Configuration
 
 Default mode (no key required):
@@ -97,6 +121,7 @@ export OPENAI_MODEL=gpt-4o-mini
 - [Recruiter Brief](docs/recruiter-brief.md)
 - [Resume Bullet Bank](docs/resume-bullets.md)
 - [GitHub Profile Optimization](docs/github-optimization.md)
+- [Release Checklist](docs/release-checklist.md)
 
 ## License
 
