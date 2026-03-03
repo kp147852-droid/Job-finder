@@ -74,17 +74,17 @@ Open:
 
 Add images to `docs/images/` with these names:
 
-- `dashboard-home.png`
-- `discover-auto-apply.png`
-- `discovered-jobs-selection.png`
-- `applications-status.png`
+- `dashboard-home.svg` (or `.png`)
+- `discover-auto-apply.svg` (or `.png`)
+- `discovered-jobs-selection.svg` (or `.png`)
+- `applications-status.svg` (or `.png`)
 
 Then they render automatically below:
 
-![Dashboard Home](docs/images/dashboard-home.png)
-![Discover Auto Apply](docs/images/discover-auto-apply.png)
-![Discovered Jobs Selection](docs/images/discovered-jobs-selection.png)
-![Applications Status](docs/images/applications-status.png)
+![Dashboard Home](docs/images/dashboard-home.svg)
+![Discover Auto Apply](docs/images/discover-auto-apply.svg)
+![Discovered Jobs Selection](docs/images/discovered-jobs-selection.svg)
+![Applications Status](docs/images/applications-status.svg)
 
 ## Internet Search Configuration
 
