@@ -72,19 +72,27 @@ Open:
 
 ## Screenshots
 
-Add images to `docs/images/` with these names:
+Generate real screenshots automatically (while the app is running on `http://127.0.0.1:8000/`):
 
-- `dashboard-home.svg` (or `.png`)
-- `discover-auto-apply.svg` (or `.png`)
-- `discovered-jobs-selection.svg` (or `.png`)
-- `applications-status.svg` (or `.png`)
+```bash
+cd backend
+source .venv/bin/activate
+python scripts/capture_readme_screenshots.py
+```
+
+This creates:
+
+- `docs/images/dashboard-home.png`
+- `docs/images/discover-auto-apply.png`
+- `docs/images/discovered-jobs-selection.png`
+- `docs/images/applications-status.png`
 
 Then they render automatically below:
 
-![Dashboard Home](docs/images/dashboard-home.svg)
-![Discover Auto Apply](docs/images/discover-auto-apply.svg)
-![Discovered Jobs Selection](docs/images/discovered-jobs-selection.svg)
-![Applications Status](docs/images/applications-status.svg)
+![Dashboard Home](docs/images/dashboard-home.png)
+![Discover Auto Apply](docs/images/discover-auto-apply.png)
+![Discovered Jobs Selection](docs/images/discovered-jobs-selection.png)
+![Applications Status](docs/images/applications-status.png)
 
 ## Internet Search Configuration
 
