@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ApplyFlow Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">AI Job Automation</p>
+          <h1>ApplyFlow Dashboard</h1>
+        </div>
+        <div id="healthBadge" class="badge badge-warn">API Unknown</div>
+      </header>
+
+      <section class="grid two-col">
+        <article class="card">
+          <h2>Profile</h2>
+          <form id="profileForm" class="stack">
+            <input name="full_name" placeholder="Full name" required />
+            <input name="email" type="email" placeholder="Email" required />
+            <input name="locations" placeholder="Locations (comma-separated)" />
+            <input name="target_titles" placeholder="Target titles (comma-separated)" />
+            <input name="required_salary_min" type="number" placeholder="Min salary" />
+            <label class="inline-control"><input name="remote_ok" type="checkbox" checked /> Remote OK</label>
+            <button type="submit">Save Profile</button>
+          </form>
+        </article>
+
+        <article class="card">
+          <h2>Resume</h2>
+          <form id="resumeForm" class="stack">
+            <textarea name="resume_text" rows="10" placeholder="Paste resume text" required></textarea>
+            <button type="submit">Parse Resume</button>
+          </form>
+        </article>
+      </section>
+
+      <section class="grid two-col">
+        <article class="card">
+          <h2>Discover + Auto Apply</h2>
+          <p class="section-note">Search jobs, score fit with AI, then apply automatically to top matches.</p>
+          <div class="callout">
+            <strong>Minimum required:</strong> only <code>Search query</code>.
+            <span>Everything else is optional and helps narrow results (field, title, education, location, score, and caps).</span>
+          </div>
+          <form id="discoverApplyForm" class="stack">
+            <input name="query" placeholder="Search query (e.g., data analyst)" required />
+            <input name="search_sources" value="public, linkedin_web, indeed_web, google_web" />
+            <input name="additional_queries" placeholder="Additional job searches (comma-separated)" />
+            <input name="focus_fields" placeholder="Focus fields (e.g., IT, Education, Business)" />
+            <input name="include_titles" placeholder="Must include titles (comma-separated)" />
+            <input name="exclude_titles" placeholder="Exclude titles (comma-separated)" />
+            <input name="education_levels" placeholder="Education filters (e.g., bachelor, master)" />
+            <input name="location" placeholder="Location" />
+            <div class="field-grid">
+              <label class="field-item">
+                <span class="field-label">Jobs To Scan</span>
+                <input name="limit" type="number" value="25" min="1" max="100" />
+                <span class="field-help">How many jobs to pull from search before scoring.</span>
+              </label>
+              <label class="field-item">
+                <span class="field-label">Minimum Match Score</span>
+                <input name="min_ai_score" type="number" value="70" min="0" max="100" />
+                <span class="field-help">Only apply to jobs at or above this AI score (0-100).</span>
+              </label>
+              <label class="field-item">
+                <span class="field-label">Max Applications</span>
+                <input name="max_apply" type="number" value="10" min="1" max="50" />
+                <span class="field-help">Maximum number of applications to submit this run.</span>
+              </label>
+            </div>
+            <label class="inline-control"><input name="remote_only" type="checkbox" /> Remote only</label>
+            <button type="submit">Run Discovery + Auto Apply</button>
+          </form>
+        </article>
+
+        <article class="card">
+          <h2>Apply To Specific Jobs</h2>
+          <form id="specificApplyForm" class="stack">
+            <input name="job_ids" placeholder="Job IDs (comma-separated)" required />
+            <div class="field-grid">
+              <label class="field-item">
+                <span class="field-label">Minimum Match Score</span>
+                <input name="min_ai_score" type="number" value="60" min="0" max="100" />
+                <span class="field-help">Only apply if score is above this threshold.</span>
+              </label>
+              <label class="field-item">
+                <span class="field-label">Max Applications</span>
+                <input name="max_apply" type="number" value="25" min="1" max="100" />
+                <span class="field-help">Cap how many of the selected jobs to submit.</span>
+              </label>
+            </div>
+            <button type="submit">Apply To Selected Jobs</button>
+          </form>
+        </article>
+
+        <article class="card">
+          <h2>Browser Adapter Apply</h2>
+          <form id="adapterForm" class="stack">
+            <input name="job_id" placeholder="Job ID" required />
+            <select name="provider" required>
+              <option value="linkedin">LinkedIn</option>
+              <option value="indeed">Indeed</option>
+              <option value="glassdoor">Glassdoor</option>
+            </select>
+            <input name="storage_state_path" placeholder="Optional Playwright storage state path" />
+            <button type="submit">Apply With Browser Adapter</button>
+          </form>
+        </article>
+      </section>
+
+      <section class="card">
+        <div class="row-between">
+          <h2>Applications</h2>
+          <button id="refreshApps">Refresh</button>
+        </div>
+        <div id="applications" class="table-wrap"></div>
+      </section>
+
+      <section class="card">
+        <div class="row-between">
+          <h2>Discovered Jobs</h2>
+          <div class="row-actions">
+            <button id="applySelectedJobs">Apply Selected</button>
+            <button id="refreshJobs">Refresh</button>
+          </div>
+        </div>
+        <div id="jobsTable" class="table-wrap"></div>
+      </section>
+
+      <section class="card">
+        <h2>Activity Log</h2>
+        <pre id="log"></pre>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
